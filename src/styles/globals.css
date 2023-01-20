@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.font-logo {
+  font-family: 'Comforter Brush', cursive;
+}
+
+.font-cursive {
+  font-family: 'Lobster Two', cursive;
+}
