@@ -2,10 +2,10 @@
 import Link from 'next/link'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
-import { trpc } from '../../../utils/trpc'
+import { api } from '@/utils/api'
 
 const Home = () => {
-  const hello = trpc.example.hello.useQuery({ text: 'from tRPC' })
+  const hello = api.example.hello.useQuery({ text: 'from tRPC' })
 
   return (
     <main className="container mx-auto flex min-h-screen flex-col items-center justify-center bg-bg-400 p-4 text-text-500">
@@ -60,7 +60,7 @@ const Home = () => {
 export default Home
 
 const AuthShowcase: React.FC = () => {
-  const { data: secretMessage } = trpc.auth.getSecretMessage.useQuery()
+  const { data: secretMessage } = api.auth.getSecretMessage.useQuery()
 
   const { data: sessionData } = useSession()
 
