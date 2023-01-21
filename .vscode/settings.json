@@ -3,10 +3,10 @@
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "reactSnippets.settings.typescriptPropsStatePrefix": "interface",
   "files.exclude": {
-    ".vscode": false,
-    ".next": false,
-    "build": false,
-    "node_modules": false
+    ".vscode": true,
+    ".next": true,
+    "build": true,
+    "node_modules": true
   },
-  "workspace.isHidden": false
+  "workspace.isHidden": true
 }

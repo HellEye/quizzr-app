@@ -1,7 +1,7 @@
 import { z } from 'zod'
 import { publicProcedure, createTRPCRouter } from '../trpc'
 import shortid from 'shortid'
-import { TRPCError } from '@trpc/server'
+// import { TRPCError } from '@trpc/server'
 
 export const QuizBase = z.object({
   name: z.string().min(3),
@@ -9,17 +9,17 @@ export const QuizBase = z.object({
   public: z.boolean(),
 })
 const quizInputProcedure = publicProcedure.input(QuizBase)
-const quizEditorProcedure = publicProcedure
-  .input(z.object({ shortId: z.string() }))
-  .use(({ ctx, input, next }) => {
-    const quiz = ctx.prisma.quiz.findUnique({
-      where: { shortId: input.shortId },
-      include: { author: true, editors: true },
-    })
-    if (!quiz) throw new TRPCError({ code: 'NOT_FOUND' })
-    //TODO check if user is editor
-    return next({ ctx: { ...ctx, quiz } })
-  })
+// const quizEditorProcedure = publicProcedure
+//   .input(z.object({ shortId: z.string() }))
+//   .use(({ ctx, input, next }) => {
+//     const quiz = ctx.prisma.quiz.findUnique({
+//       where: { shortId: input.shortId },
+//       include: { author: true, editors: true },
+//     })
+//     if (!quiz) throw new TRPCError({ code: 'NOT_FOUND' })
+//     //TODO check if user is editor
+//     return next({ ctx: { ...ctx, quiz } })
+//   })
 
 // export const quizEditProcedure = quizInputProcedure.use(({ctx, next, input, prisma})=>{
 //   const a =
