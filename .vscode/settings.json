@@ -1,12 +1,12 @@
 {
-  "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.4/node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "reactSnippets.settings.typescriptPropsStatePrefix": "interface",
   "files.exclude": {
-    ".vscode": true,
-    ".next": true,
-    "build": true,
-    "node_modules": true
+    ".vscode": false,
+    ".next": false,
+    "build": false,
+    "node_modules": false
   },
-  "workspace.isHidden": true
+  "workspace.isHidden": false
 }
