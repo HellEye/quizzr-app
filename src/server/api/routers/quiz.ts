@@ -3,11 +3,8 @@ import { publicProcedure, createTRPCRouter, protectedProcedure } from '../trpc'
 import shortid from 'shortid'
 import { TRPCError } from '@trpc/server'
 import crypto from 'crypto'
-export const QuizBase = z.object({
-  name: z.string().min(3),
-  description: z.string().optional(),
-  public: z.boolean(),
-})
+import { QuizBase } from '../validators/quiz'
+
 export const quizEditorProcedure = publicProcedure
   .input(z.object({ shortId: z.string(), editLink: z.string().optional() }))
   .use(async ({ ctx, input, next }) => {
@@ -71,7 +68,7 @@ export const quiz = createTRPCRouter({
       data: {
         name: input.name,
         description: input.description,
-        public: input.public,
+        public: input.public ?? false,
         authorId: ctx.session?.user?.id,
         editLink,
         shortId,
@@ -94,7 +91,7 @@ export const quiz = createTRPCRouter({
       data: {
         name: input.name,
         description: input.description,
-        public: input.public,
+        public: input.public ?? false,
         authorId: ctx.session?.user?.id,
         shortId,
       },

@@ -10,7 +10,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, label, labelClassName, ...props }, ref) => {
     return (
-      <div className="flex flex-row">
+      <div className="flex flex-row items-center gap-4">
         {label && (
           <label className={cn('', labelClassName)} htmlFor={label}>
             {label}

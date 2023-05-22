@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { Card, CardContent, CardDescription, CardTitle } from '@ui/card'
+import { Card, CardContent, CardTitle } from '@ui/card'
 import BaseLayout from '@/components/layout/BaseLayout'
 import { type ReactElement } from 'react'
 import { type NextPageWithLayout } from './_app'

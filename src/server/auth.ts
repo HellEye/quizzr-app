@@ -1,12 +1,11 @@
 import { type GetServerSidePropsContext } from 'next'
 import { getServerSession, type NextAuthOptions, type DefaultSession } from 'next-auth'
-import CredentialProvider from 'next-auth/providers/credentials'
+// import CredentialProvider from 'next-auth/providers/credentials'
 import DiscordProvider from 'next-auth/providers/discord'
 import { PrismaAdapter } from '@next-auth/prisma-adapter'
 import { env } from '@/env.mjs'
 import { prisma } from '@/server/db'
-import { z } from 'zod'
-import bcrypt from 'bcrypt'
+// import bcrypt from 'bcrypt'
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -28,10 +27,10 @@ declare module 'next-auth' {
   // }
 }
 
-const credentialsValidator = z.object({
-  email: z.string().email(),
-  password: z.string(),
-})
+// const credentialsValidator = z.object({
+//   email: z.string().email(),
+//   password: z.string(),
+// })
 
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
@@ -50,7 +49,7 @@ export const authOptions: NextAuthOptions = {
   },
   adapter: PrismaAdapter(prisma),
   providers: [
-    CredentialProvider({
+    /* CredentialProvider({
       name: 'Email/Password',
       type: 'credentials',
       id: 'email',
@@ -77,7 +76,7 @@ export const authOptions: NextAuthOptions = {
           return null
         }
       },
-    }),
+    }), */
     DiscordProvider({
       id: 'discord',
       clientId: env.DISCORD_CLIENT_ID,
